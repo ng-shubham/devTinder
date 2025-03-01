@@ -26,3 +26,10 @@
 - javascript object vs JSON 
 - add the express.json middleware to your app
 - Make you signup API dynamic to receive data from end user  
+- API - GET user by emailId
+- API - Feed API - GET/Feed - get all user from the database
+- API - Get user by Id
+- Create a user Delete API
+- API - Update a user
+- Explore the Mongoose Documentation for Model methods
+- 
