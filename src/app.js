@@ -7,14 +7,13 @@ const User = require("./models/user")
 app.use(express.json());
 
 // Signup API call
-app.post('/signup', async (req, res) => {  
-    console.log('signup API');
+app.post('/signup', async (req, res) => {   
      const user = new User(req.body)
     try{
         await user.save()
         res.send("User added successfully!")
     } catch(err){
-        res.status(400).send("Error while saving user:", err.message)
+        res.send(err.message)
     }
 })
 
@@ -59,10 +58,12 @@ app.patch("/user", async (req, res) => {
     const userId = req.body.userId;
     const data = req.body;
     try{
-        const user = await User.findByIdAndUpdate(userId, data);
+        const user = await User.findByIdAndUpdate(userId, data, {
+            runValidators: true
+        });
         res.send("User updated Successfully")
     }catch(err){
-        res.status(400).send("User Not found");
+        res.status(400).send("Update Failed:");
     }
 })
 
